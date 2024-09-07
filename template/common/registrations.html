@@ -1,0 +1,143 @@
+{% extends 'common/base.html' %}
+{% block header %}
+<body style="background-color:  rgb(5, 245, 217);">
+<style>
+   
+   
+    form {
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      
+        text-align: center;
+    }
+    h2 {
+        color: #8b2828;
+        font: 1em sans-serifAileron;
+        padding: auto;
+       size: 15px;
+
+    }
+    label {
+        display: block;
+        margin-top: 15px;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: #555555;
+    }
+    input {
+        width: 50%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #cccccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+    input[type="submit"] {
+        background-color: #4caf50;
+        color: #ffffff;
+        padding: 12px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    p.error {
+        color: red;
+        margin-top: 10px;
+        font-size: 14px;
+    }
+    p.success {
+        color: green;
+        margin-top: 10px;
+        font-size: 14px;
+    }
+    .password-hint {
+        font-size: 12px;
+        color: #888888;
+        margin-top: -10px;
+        margin-bottom: 15px;
+    }
+</style>
+<div style="overflow: auto;">
+<form id="registrationForm" onsubmit="return validateForm()" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h2>Registration Form</h2>
+
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+    <p class="password-hint">Hint: Include a mix of uppercase and lowercase letters, numbers, and symbols.</p>
+
+    <label for="confirmPassword">Confirm Password:</label>
+    <input type="password" id="confirmPassword" name="confirmPassword" required>
+
+    <label for="photo">Upload License Photos:</label>
+    <input type="file" id="img" name="img" style="margin-left: 368px;" accept="img/*">
+
+    <label for="photo">Upload Your Photo:</label>
+    <input type="file" id="photo" name="img" style="margin-left: 368px;" accept="img/*">
+
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email"  required>
+
+    <label for="address">Address:</label>
+    <input type="address" id="address" name="address" required>
+
+    <label for="phoneno">Phone number:</label>
+    <input type="tel" id="phoneno" name="phoneno" pattern="[0-9]{10}" title="Please enter a valid 10-digit phone number" required>
+
+    <label for="dob">Date of Birth:</label>
+    <input type="date" id="dob" name="dob" required>
+
+    <p id="ageError" class="error"></p>
+
+    <p id="passwordMatchError" class="error"></p>
+
+    <input type="submit" value="Register">
+    
+</form>
+</div>
+<script>
+    function validateForm() {
+        var dob = new Date(document.getElementById("dob").value);
+        var today = new Date();
+        var age = today.getFullYear() - dob.getFullYear();
+
+        if (today.getMonth() < dob.getMonth() || (today.getMonth() === dob.getMonth() && today.getDate() < dob.getDate())) {
+            age--;
+        }
+
+        var ageError = document.getElementById("ageError");
+
+        if (age < 18) {
+            ageError.innerText = "You must be above 18 years old.";
+            return false;
+        }
+
+        ageError.innerText = ""; // Clear previous error messages
+
+        var password = document.getElementById("password").value;
+        var confirmPassword = document.getElementById("confirmPassword").value;
+        var passwordMatchError = document.getElementById("passwordMatchError");
+
+        if (password !== confirmPassword) {
+            passwordMatchError.innerText = "Passwords do not match.";
+            return false;
+        }
+
+        passwordMatchError.innerText = ""; // Clear previous error messages
+
+        return true;
+    }
+</script>
+
+
+{% endblock %}

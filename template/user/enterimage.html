@@ -1,0 +1,17 @@
+
+{% extends 'user/base.html' %}
+
+{% load static %}
+{% block header %}
+
+
+
+
+<h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+    <input type="file" name="img">
+    <input type="submit" name="submit">
+</form>
+</h1>
+{% endblock %}

@@ -1,0 +1,127 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>Login 10</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	<link rel="stylesheet" href="/static/logins/css/style.css">
+
+	</head>
+
+	<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu</title>
+  <style>
+    /* Styling for menu items */
+    .menu {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #0e565e; /* Background color of the menu */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add shadow */
+      text-align: center; /* Center align the items */
+	  
+    }
+
+    .menu li {
+      display: inline-block; /* Display items in a row */
+	  
+    }
+
+    .menu li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    /* Change color of the links when hovered */
+    .menu li a:hover {
+      background-color: #008c8c;
+    }
+  </style>
+</head>
+<body>
+
+<ul class="menu">
+  <li><a href="/">Home</a></li>
+  <li><a href="/login">Login</a></li>
+  <li><a href="/registration">Registration</a></li>
+  
+  <!-- <li><a href="/about">About</a></li> -->
+</ul>
+
+</body>
+</html>
+
+
+
+
+
+	<body class="img js-fullheight" style="background-image: url(/static/logins/images/bg.jpg);">
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+					<h2 class="heading-section">Login</h2>
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-md-6 col-lg-4">
+					<div class="login-wrap p-0">
+		      	<h3 class="mb-4 text-center">Have an account?</h3>
+		      	<form method="POST" class="signin-form">
+                    {% csrf_token %}
+		      		<div class="form-group">
+		      			<input type="text" class="form-control" name="username"  placeholder="Username" required>
+		      		</div>
+	            <div class="form-group">
+	              <input id="password-field" type="password" class="form-control" name="password" placeholder="Password" required>
+	              <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+	            </div>
+	            <div class="form-group">
+	            	<button type="submit" class="form-control btn btn-primary submit px-3">Sign In</button>
+	            </div>
+	            <div class="form-group d-md-flex">
+	            	<div class="w-50 text-md-right">
+						<a href="/" style="color: #fff; font-size: 25px; text-decoration: underline;">Home</a>
+
+						
+						     
+                    </div>
+								<div class="w-50 text-md-right">
+									<a href="/registration" style= "color: #fff">New User</a>
+									
+								</div>
+	            </div>
+	          </form>
+	          <!-- <p class="w-100 text-center">&mdash; Or Sign In With &mdash;</p> -->
+	          <div class="social d-flex text-center">
+	          	<!-- <a href="#" class="px-2 py-2 mr-md-1 rounded"><span class="ion-logo-facebook mr-2"></span> Facebook</a>
+	          	<a href="#" class="px-2 py-2 ml-md-1 rounded"><span class="ion-logo-twitter mr-2"></span> Twitter</a> -->
+	          </div>
+		      </div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<script src="/static/logins/js/jquery.min.js"></script>
+  <script src="/static/logins/js/popper.js"></script>
+  <script src="/static/logins/js/bootstrap.min.js"></script>
+  <script src="/static/logins/js/main.js"></script>
+
+	</body>
+</html>
+
